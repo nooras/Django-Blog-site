@@ -1,0 +1,29 @@
+{% extends  "base.html"%}
+
+{% block head_title %} {{object_list.title}} | {{ block.super }} {% endblock head_title %}
+
+{% block content %}
+        <div class="card">
+                {% if object_list.image %}
+                <img src="{{ object_list.image.url }}" style="max-height: 550px; margin: 0 auto;"  class="card-img-top centered" alt="...">
+                {% endif %}
+                <div class="card-header" style="border-top: 1px solid rgba(0,0,0,.125);">
+                        <div class="row">
+                                <div class="col">
+                                        {% if object_list.user %}
+                                        <small><strong>Author : {{object_list.user}}</strong></small>
+                                        {% endif %}
+                                </div>
+                                <div class="col text-right">
+                                        <small>{{object_list.timestamp}}</small>
+                                </div>
+                        </div>
+                </div>
+                <div class="card-body">       
+                        <h5 class="card-title">{{object_list.title}}</h5>
+                        <p class="card-text">{{object_list.content|linebreaks}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+                <div class="fb-comments" data-numposts="5" data-width=""></div>
+        </div>
+{% endblock content %}
